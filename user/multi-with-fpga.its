@@ -50,7 +50,7 @@
 
                 ramdisk@0 {
                         description = "ramdisk";
-                        data = /incbin/("./rootfs.cpio.uboot");
+                        data = /incbin/("./rootfs.cpio");
                         type = "ramdisk";
                         arch = "arm";
                         os = "linux";

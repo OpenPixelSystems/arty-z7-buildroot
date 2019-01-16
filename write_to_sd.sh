@@ -23,7 +23,7 @@ done
 echo "Renaming files"
 mv $DESTINATION'/zynq-artyz7.dtb' $DESTINATION'/devicetree.dtb'
 #mv $DESTINATION'/rootfs.cpio.uboot' $DESTINATION'/uramdisk.image.gz'
-cp ./multi-with-fpga.its $DESTINATION
+cp user/multi-with-fpga.its $DESTINATION
 
 echo "Syncing files"
 sync
