@@ -1,0 +1,14 @@
+language: ruby
+sudo: required
+dist: trusty
+compiler:
+        - gcc
+install:
+        - sudo apt install sed make binutils build-essential gcc g++ bash patch gzip bzip2 perl tar cpio python unzip rsync file bc wget git libncurses5-dev u-boot-tools
+
+script:
+        - make defconfig BR2_DEFCONFIG=./defconfig
+        - make
+  env:
+          global:
+          - LANG="en_US.UTF-8"
