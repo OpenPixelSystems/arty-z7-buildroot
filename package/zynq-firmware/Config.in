@@ -1,0 +1,5 @@
+config BR2_PACKAGE_ZYNQ_FW
+	bool "zynq_fw"
+	help
+		This package contains the firmware build for
+		a zynq fpga.
