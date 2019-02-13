@@ -3,3 +3,9 @@ config BR2_PACKAGE_ZYNQ_FW
 	help
 		This package contains the firmware build for
 		a zynq fpga.
+if BR2_PACKAGE_ZYNQ_FW
+config BR2_ZYNQ_FIRMWARE_PATH 
+	string "Zynq Firmware path"
+	help
+		Path to the zynq firmware directory
+endif
