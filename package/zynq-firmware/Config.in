@@ -8,4 +8,8 @@ config BR2_ZYNQ_FIRMWARE_PATH
 	string "Zynq Firmware path"
 	help
 		Path to the zynq firmware directory
+config BR2_ZYNQ_REPO_PATH 
+	string "Zynq Firmware extra repository path"
+	help
+		Path to the zynq firmware repositories
 endif

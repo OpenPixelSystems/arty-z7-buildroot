@@ -9,7 +9,8 @@ ZYNQ_FIRMWARE_SITE = $(call github,openpixelsystems,makefile-vivado-project,mast
 #ZYNQ_FIRMWARE_SITE_METHOD = git
 
 define ZYNQ_FIRMWARE_BUILD_CMDS
-    ORIGIN_DIR=$(BR2_ZYNQ_FIRMWARE_PATH) $(MAKE) CC="$(HOST_CC)" LD="$(HOST_LD)" -C $(@D)
+    REPO_DIR=$(BR2_ZYNQ_REPO_PATH) ORIGIN_DIR=$(BR2_ZYNQ_FIRMWARE_PATH) $(MAKE) CC="$(HOST_CC)" LD="$(HOST_LD)" -C $(@D)
+    cp $(@D)/build/project.sdk/project.bit $(BINARIES_DIR)/fpga.bit 
 endef
 
 $(eval $(generic-package))
