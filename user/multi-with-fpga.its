@@ -6,77 +6,78 @@
 /dts-v1/;
 
 / {
-        description = "Configuration to load fpga before Kernel";
+	description = "Configuration to load fpga before Kernel";
 #address-cells = <1>;
 
-        images {
-                fdt@0 {
-                        description = "artyz7";
-                        data = /incbin/("./devicetree.dtb");
-                        type = "flat_dt";
-                        arch = "arm";
-                        compression = "none";
-                        load = <0x10000000>;
-                        hash@1 {
-                                algo = "md5";
-                        };
-                };
+	images {
+		fdt@0 {
+			description = "artyz7";
+			data = /incbin/("./devicetree.dtb");
+			type = "flat_dt";
+			arch = "arm";
+			compression = "none";
+			load = <0x10000000>;
+			hash@1 {
+				algo = "md5";
+			};
+		};
 
-                //		fpga@0 {
-                //			description = "FPGA";
-                //			data = /incbin/("./download.bit");
-                //			type = "fpga";
-                //			arch = "arm";
-                //			compression = "none";
-                //			load = <0x30000000>;
-                //			hash@1 {
-                //				algo = "md5";
-                //			};
-                //		};
+		fpga@0 {
+			description = "FPGA";
+			data = /incbin/("./fpga.bit");
+			type = "fpga";
+			arch = "arm";
+			compression = "none";
+			load = <0x30000000>;
+			hash@1 {
+				algo = "md5";
+			};
+		};
 
-                linux_kernel@0 {
-                        description = "Linux";
-                        data = /incbin/("./Image");
-                        type = "kernel";
-                        arch = "arm";
-                        os = "linux";
-                        compression = "none";
-                        load = <0x8000>;
-                        entry = <0x8000>;
-                        hash@1 {
-                                algo = "md5";
-                        };
-                };
+		linux_kernel@0 {
+			description = "Linux";
+			data = /incbin/("./Image");
+			type = "kernel";
+			arch = "arm";
+			os = "linux";
+			compression = "none";
+			load = <0x8000>;
+			entry = <0x8000>;
+			hash@1 {
+				algo = "md5";
+			};
+		};
 
-                ramdisk@0 {
-                        description = "ramdisk";
-                        data = /incbin/("./rootfs.cpio");
-                        type = "ramdisk";
-                        arch = "arm";
-                        os = "linux";
-                        compression = "none";
-                        load = <00000000>;
-                        entry = <00000000>;
-                        hash@1 {
-                                algo = "sha1";
-                        };
-                };
-        };
+		ramdisk@0 {
+			description = "ramdisk";
+			data = /incbin/("./rootfs.cpio");
+			type = "ramdisk";
+			arch = "arm";
+			os = "linux";
+			compression = "none";
+			load = <00000000>;
+			entry = <00000000>;
+			hash@1 {
+				algo = "sha1";
+			};
+		};
+	};
 
-        configurations {
-                default = "config@1";
-                config@1 {
-                        description = "Linux";
-                        kernel = "linux_kernel@0";
-                        fdt = "fdt@0";
-                        ramdisk = "ramdisk@0";
-                };
+	configurations {
+		default = "config@1";
+		config@1 {
+			description = "Linux";
+			kernel = "linux_kernel@0";
+			fdt = "fdt@0";
+			ramdisk = "ramdisk@0";
+			fpga = "fpga@0";
+		};
 
-                //                config@2 {
-                //                        description = "Linux with fpga";
-                //                        kernel = "linux_kernel@0";
-                //                        fdt = "fdt@0";
-                //                        fpga = "fpga@0";
-                //                };
-        };
+		//                config@2 {
+		//                        description = "Linux with fpga";
+		//                        kernel = "linux_kernel@0";
+		//                        fdt = "fdt@0";
+		//                        fpga = "fpga@0";
+		//                };
+	};
 };
