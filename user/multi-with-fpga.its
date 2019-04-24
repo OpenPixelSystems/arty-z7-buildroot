@@ -12,11 +12,11 @@
 	images {
 		fdt@0 {
 			description = "artyz7";
-			data = /incbin/("./devicetree.dtb");
+			data = /incbin/("./zynq-artyz7.dtb");
 			type = "flat_dt";
 			arch = "arm";
 			compression = "none";
-			load = <0x10000000>;
+			load = <0x05000000>;
 			hash@1 {
 				algo = "md5";
 			};
